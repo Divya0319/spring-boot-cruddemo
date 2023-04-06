@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-crud-demo
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-crud-demo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring-boot-crud-demo
+    spec:
+      containers:
+        - name: spring-boot-crud-demo
+          image: nikoleye/spring-boot-crud-demo:1.1
+          env:   # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: mysql
+            - name: DB_NAME  # Setting Database name
+              value: employee_directory
+            - name: DB_USERNAME  # Setting Database username
+              value: springstudent
+            - name: DB_PASSWORD # Setting Database password
+              value: springstudent
+---
+# Define a 'Service' To Expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-crud-demo
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080    # Port inside the cluster
+      targetPort: 8080   # Port exposed to the outside
+  selector:
+    app: spring-boot-crud-demo
+  type: NodePort

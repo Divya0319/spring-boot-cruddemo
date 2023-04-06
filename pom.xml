@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.luv2code.springboot</groupId>
-	<artifactId>cruddemo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>spring-boot-crud-demo</artifactId>
+	<version>1.1</version>
 	<name>cruddemo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Boot Crud Demo project</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
@@ -50,6 +50,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>nikoleye/${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
