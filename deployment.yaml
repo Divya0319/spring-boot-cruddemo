@@ -23,7 +23,7 @@ spec:
         app: spring-boot-crud-demo
     spec:
       containers:
-      - image: nikoleye/spring-boot-crud-demo:1.0
+      - image: nikoleye/spring-boot-crud-demo:1.2-H2CONSOLE
         imagePullPolicy: IfNotPresent
         name: spring-boot-crud-demo
         resources:
