@@ -11,6 +11,11 @@ spec:
   selector:
     matchLabels:
       app: spring-boot-crud-mysql
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate    
   replicas: 1
   template:
     metadata:
@@ -63,4 +68,5 @@ spec:
       targetPort: 8080   # Port exposed to the outside
   selector:
     app: spring-boot-crud-mysql
-  type: NodePort
+  sessionAffinity: None
+  type: LoadBalancer
