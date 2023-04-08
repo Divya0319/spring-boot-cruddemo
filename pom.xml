@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.luv2code.springboot</groupId>
 	<artifactId>spring-boot-crud-demo</artifactId>
-	<version>1.1</version>
+	<version>1.3-MYSQL-KUBE</version>
 	<name>cruddemo</name>
 	<description>Spring Boot Crud Demo project</description>
 	<properties>

@@ -8,8 +8,8 @@ metadata:
     tier: database
 spec:
   ports:
-    - port: 3307
-      targetPort: 3307
+    - port: 3306
+      targetPort: 3306
   selector:
     app: mysql
     tier: database
@@ -58,12 +58,15 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-pass
+                  name: mysql-secrets
                   key: password
             - name: MYSQL_DATABASE
-              value: employee_directory
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: dbName
           ports:
-            - containerPort: 3307
+            - containerPort: 3306
               name: mysql
           volumeMounts:
             - mountPath: /var/lib/mysql
