@@ -48,7 +48,8 @@ public class EmployeeRESTController {
 		// CHANGE-KUBERNETES
 		String port = environment.getProperty("local.server.port");
 		String host = environment.getProperty("HOSTNAME");
-		host = host.substring(host.length() - 5, host.length());
+		if(host != null)
+			host = host.substring(host.length() - 5, host.length());
 		String version = "1.2-H2CONSOLE";
 		
 		
