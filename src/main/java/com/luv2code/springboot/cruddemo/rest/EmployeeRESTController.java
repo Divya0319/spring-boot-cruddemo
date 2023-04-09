@@ -3,6 +3,7 @@ package com.luv2code.springboot.cruddemo.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,9 @@ public class EmployeeRESTController {
 		employeeService = theEmployeeService;
 	}
 	
+	@Autowired
+	Environment environment;
+	
 	
 	// expose "/employees" and return list of employees
 	@GetMapping("/employees")
@@ -41,9 +45,21 @@ public class EmployeeRESTController {
 		
 		Employee theEmployee = employeeService.findById(employeeId);
 		
+		// CHANGE-KUBERNETES
+		String port = environment.getProperty("local.server.port");
+		String host = environment.getProperty("HOSTNAME");
+		host = host.substring(host.length() - 5, host.length());
+		String version = "1.2-H2CONSOLE";
+		
+		
 		if(theEmployee == null) {
 			throw new RuntimeException("Employee id not found - " + employeeId);
 		}
+		
+		String email = theEmployee.getEmail();
+		System.out.println("Email: " + email);
+		
+		theEmployee.setEmail(email + " " + port + " " + version + " " + host);
 		
 		return theEmployee;
 	}
