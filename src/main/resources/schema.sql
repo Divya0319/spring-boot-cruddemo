@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS employee_directory;
-
-USE employee_directory;
-
 DROP TABLE IF EXISTS employee;
 
 CREATE TABLE employee(

@@ -4,14 +4,14 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: spring-boot-crud-demo
-  name: spring-boot-crud-demo
+    app: spring-boot-crud-h2
+  name: spring-boot-crud-h2
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-boot-crud-demo
+      app: spring-boot-crud-h2
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,12 +20,12 @@ spec:
   template:
     metadata:
       labels:
-        app: spring-boot-crud-demo
+        app: spring-boot-crud-h2
     spec:
       containers:
       - image: nikoleye/spring-boot-crud-demo:1.2-H2CONSOLE
         imagePullPolicy: IfNotPresent
-        name: spring-boot-crud-demo
+        name: spring-boot-crud-h2
         resources:
           requests: 
             cpu: "250m"
@@ -37,8 +37,8 @@ metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
   labels:
-    app: spring-boot-crud-demo
-  name: spring-boot-crud-demo
+    app: spring-boot-crud-h2
+  name: spring-boot-crud-h2
   namespace: default
 spec:
   ports:
@@ -46,7 +46,7 @@ spec:
      protocol: TCP
      targetPort: 8000
   selector:
-    app: spring-boot-crud-demo
+    app: spring-boot-crud-h2
   sessionAffinity: None
   type: LoadBalancer
 
