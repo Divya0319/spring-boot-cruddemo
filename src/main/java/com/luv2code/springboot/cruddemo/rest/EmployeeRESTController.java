@@ -59,7 +59,7 @@ public class EmployeeRESTController {
 		String email = theEmployee.getEmail();
 		System.out.println("Email: " + email);
 		
-		theEmployee.setEmail(email  + " " + version + " " + host);
+		theEmployee.setEmail(email + " " + version + " " + host);
 		
 		return theEmployee;
 	}
