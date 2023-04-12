@@ -1,7 +1,7 @@
 apiVersion : v1
 kind : ConfigMap
 metadata:
-  name : db-config
+  name : db-config-cruddemo
 data:
   host : mysql
-  dbName: employee_directory
+  dbName: user_detail
