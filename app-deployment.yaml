@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: spring-boot-crud-mysql
-          image: nikoleye/spring-boot-crud-demo:1.3-MYSQL-KUBE
+          image: nikoleye/spring-boot-crud-demo:1.5-MYSQL-KUBE
           imagePullPolicy: IfNotPresent
           resources:
             requests: 
